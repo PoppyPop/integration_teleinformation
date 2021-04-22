@@ -36,7 +36,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     # serialnumber = await usb_dongle.async_config_entry_first_refresh()
     usb_dongle.initialize_reading()
 
-    while usb_dongle.device_id == None:
+    while usb_dongle.device_id is None:
         await asyncio.sleep(1)
 
     hass.data[DOMAIN][entry.entry_id][DATA_SERIAL_NUMBER] = usb_dongle.device_id

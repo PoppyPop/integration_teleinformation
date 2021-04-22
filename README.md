@@ -10,7 +10,6 @@
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 
-
 **This component will set up the following platforms.**
 
 | Platform | Description                            |

@@ -11,7 +11,6 @@
 | -------- | -------------------------------------- |
 | `sensor` | Show info from teleinformation serial. |
 
-
 ![example][logo]
 
 {% if not installed %}

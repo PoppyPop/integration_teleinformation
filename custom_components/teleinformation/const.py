@@ -10,7 +10,6 @@ from homeassistant.const import (
 )
 import logging
 
-
 NAME = "TeleInformation"
 DOMAIN = "teleinformation"
 VERSION = "0.0.1"

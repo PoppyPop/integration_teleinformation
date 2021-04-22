@@ -126,7 +126,7 @@ class TeleInformationDongle:
                                 self.hass.helpers.dispatcher.dispatcher_send(
                                     SIGNAL_RECEIVE_MESSAGE, {name: value}
                                 )
-                                if name == "ADCO" and self.device_id == None:
+                                if name == "ADCO" and self.device_id is None:
                                     self.device_id = value
 
                         if (not is_over) and (b"\x03" in line):
