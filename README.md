@@ -13,9 +13,9 @@
 
 **This component will set up the following platforms.**
 
-| Platform        | Description                                                               |
-| --------------- | ------------------------------------------------------------------------- |
-| `sensor`        | Show info from teleinformation serial.                                    |
+| Platform | Description                            |
+| -------- | -------------------------------------- |
+| `sensor` | Show info from teleinformation serial. |
 
 ![example][logo]
 
@@ -60,7 +60,7 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 
 [integration_blueprint]: https://github.com/custom-components/integration_blueprint
 [black]: https://github.com/psf/black
-[black-shield]: https://img.shields.io/badge/
+[black-shield]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
 [commits-shield]: https://img.shields.io/github/commit-activity/y/poppypop/integration_teleinformation.svg?style=for-the-badge
 [commits]: https://github.com/poppypop/integration_teleinformation/commits/master
 [hacs]: https://hacs.xyz
