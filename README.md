@@ -9,23 +9,15 @@
 
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
-[![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
-[![Discord][discord-shield]][discord]
-[![Community Forum][forum-shield]][forum]
-
-**TO BE REMOVED: If you need help, as a developer, to use this custom component tempalte,
-please look at the [User Guide in the Cookiecutter documentation](https://cookiecutter-homeassistant-custom-component.readthedocs.io/en/stable/quickstart.html)**
 
 **This component will set up the following platforms.**
 
 | Platform        | Description                                                               |
 | --------------- | ------------------------------------------------------------------------- |
-| `binary_sensor` | Show something `True` or `False`.                                         |
-| `sensor`        | Show info from teleinformation API. |
-| `switch`        | Switch something `True` or `False`.                                       |
+| `sensor`        | Show info from teleinformation serial.                                    |
 
-![example][exampleimg]
+![example][logo]
 
 ## Installation
 
@@ -42,16 +34,12 @@ Using your HA configuration directory (folder) as a starting point you should no
 ```text
 custom_components/teleinformation/translations/en.json
 custom_components/teleinformation/translations/fr.json
-custom_components/teleinformation/translations/sensor.en.json
-custom_components/teleinformation/translations/sensor.fr.json
 custom_components/teleinformation/__init__.py
-custom_components/teleinformation/api.py
-custom_components/teleinformation/binary_sensor.py
 custom_components/teleinformation/config_flow.py
 custom_components/teleinformation/const.py
+custom_components/teleinformation/dongle.py
 custom_components/teleinformation/manifest.json
 custom_components/teleinformation/sensor.py
-custom_components/teleinformation/switch.py
 ```
 
 ## Configuration is done in the UI
@@ -71,23 +59,16 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 ---
 
 [integration_blueprint]: https://github.com/custom-components/integration_blueprint
-[black]: https://github.com/psf/black
-[black-shield]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
-[buymecoffee]: https://www.buymeacoffee.com/poppypop
-[buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
 [commits-shield]: https://img.shields.io/github/commit-activity/y/poppypop/integration_teleinformation.svg?style=for-the-badge
 [commits]: https://github.com/poppypop/integration_teleinformation/commits/main
 [hacs]: https://hacs.xyz
 [hacsbadge]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge
-[discord]: https://discord.gg/Qa5fW2R
-[discord-shield]: https://img.shields.io/discord/330944238910963714.svg?style=for-the-badge
-[exampleimg]: example.png
+[logo]: Logo-EDF-500x407.jpg
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
 [forum]: https://community.home-assistant.io/
+[license]: https://github.com/poppypop/integration_teleinformation/blob/main/LICENSE
 [license-shield]: https://img.shields.io/github/license/poppypop/integration_teleinformation.svg?style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40poppypop-blue.svg?style=for-the-badge
-[pre-commit]: https://github.com/pre-commit/pre-commit
-[pre-commit-shield]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge
 [releases-shield]: https://img.shields.io/github/release/poppypop/integration_teleinformation.svg?style=for-the-badge
 [releases]: https://github.com/poppypop/integration_teleinformation/releases
 [user_profile]: https://github.com/poppypop
