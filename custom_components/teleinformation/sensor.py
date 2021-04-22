@@ -70,7 +70,7 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
     @property
     def available(self) -> bool:
         """Return True if entity is available."""
-        return super().available and self._state != None
+        return super().available and self._state is not None
 
     @property
     def device_class(self):
