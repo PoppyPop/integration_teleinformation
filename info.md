@@ -36,6 +36,8 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 ---
 
 [integration_blueprint]: https://github.com/custom-components/integration_blueprint
+[black]: https://github.com/psf/black
+[black-shield]: https://img.shields.io/badge/
 [commits-shield]: https://img.shields.io/github/commit-activity/y/poppypop/integration_teleinformation.svg?style=for-the-badge
 [commits]: https://github.com/poppypop/integration_teleinformation/commits/main
 [hacs]: https://hacs.xyz
@@ -46,6 +48,8 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 [license]: https://github.com/poppypop/integration_teleinformation/blob/main/LICENSE
 [license-shield]: https://img.shields.io/github/license/poppypop/integration_teleinformation.svg?style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40poppypop-blue.svg?style=for-the-badge
+[pre-commit]: https://github.com/pre-commit/pre-commit
+[pre-commit-shield]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge
 [releases-shield]: https://img.shields.io/github/release/poppypop/integration_teleinformation.svg?style=for-the-badge
 [releases]: https://github.com/poppypop/integration_teleinformation/releases
 [user_profile]: https://github.com/poppypop
