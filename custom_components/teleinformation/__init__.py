@@ -5,13 +5,17 @@ For more details about this integration, please refer to
 https://github.com/poppypop/integration_teleinformation
 """
 import asyncio
-from .dongle import TeleInformationDongle
-from .const import DATA_DONGLE, DATA_SERIAL_NUMBER, DOMAIN, PLATFORMS
 from datetime import timedelta
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import Config
 from homeassistant.core import HomeAssistant
+
+from .const import DATA_DONGLE
+from .const import DATA_SERIAL_NUMBER
+from .const import DOMAIN
+from .const import PLATFORMS
+from .dongle import TeleInformationDongle
 
 SCAN_INTERVAL = timedelta(minutes=900)
 

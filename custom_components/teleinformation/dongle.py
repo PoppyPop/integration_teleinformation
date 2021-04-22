@@ -1,22 +1,19 @@
 """Representation of an Teleinformation dongle."""
+import asyncio
 import glob
 import logging
 
-from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import HomeAssistant, callback
-
-from homeassistant.const import EVENT_HOMEASSISTANT_STOP
-from .const import (
-    CONF_TIMEOUT,
-    CONF_DEVICE,
-    DEFAULT_CONF_TIMEOUT,
-    SIGNAL_RECEIVE_MESSAGE,
-)
-
-import asyncio
 import serial
-
 import serial_asyncio
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import EVENT_HOMEASSISTANT_STOP
+from homeassistant.core import callback
+from homeassistant.core import HomeAssistant
+
+from .const import CONF_DEVICE
+from .const import CONF_TIMEOUT
+from .const import DEFAULT_CONF_TIMEOUT
+from .const import SIGNAL_RECEIVE_MESSAGE
 
 
 _LOGGER = logging.getLogger(__name__)

@@ -1,9 +1,9 @@
 """TeleinformationEntity class"""
 from homeassistant.helpers.entity import Entity
 
-from .const import SIGNAL_RECEIVE_MESSAGE
 from .const import DOMAIN
 from .const import NAME
+from .const import SIGNAL_RECEIVE_MESSAGE
 from .const import VERSION
 
 

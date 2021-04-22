@@ -1,16 +1,15 @@
 """Sensor platform for teleinformation."""
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from .const import (
-    DOMAIN,
-    CONF_MONITORED_VARIABLES,
-    DATA_SERIAL_NUMBER,
-    LOGGER,
-    SENSOR_TYPES,
-    SENSOR_TYPES_DEFAULT,
-)
+
+from .const import CONF_MONITORED_VARIABLES
+from .const import DATA_SERIAL_NUMBER
+from .const import DOMAIN
+from .const import LOGGER
+from .const import SENSOR_TYPES
+from .const import SENSOR_TYPES_DEFAULT
 from .entity import TeleinformationEntity
-from homeassistant.components.sensor import SensorEntity
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_devices):

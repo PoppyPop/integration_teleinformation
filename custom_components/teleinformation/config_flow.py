@@ -1,22 +1,19 @@
 """Adds config flow for teleinformation."""
-import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
 
-from .const import (
-    CONF_DEVICE,
-    CONF_MONITORED_VARIABLES,
-    CONF_TIMEOUT,
-    DEFAULT_CONF_TIMEOUT,
-    DOMAIN,
-    ERROR_INVALID_DONGLE_PATH,
-    MANUAL_PATH_VALUE,
-    SENSOR_TYPES,
-    SENSOR_TYPES_DEFAULT,
-)
-
 from . import dongle
+from .const import CONF_DEVICE
+from .const import CONF_MONITORED_VARIABLES
+from .const import CONF_TIMEOUT
+from .const import DEFAULT_CONF_TIMEOUT
+from .const import DOMAIN
+from .const import ERROR_INVALID_DONGLE_PATH
+from .const import MANUAL_PATH_VALUE
+from .const import SENSOR_TYPES
+from .const import SENSOR_TYPES_DEFAULT
 
 
 class TeleinformationFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):

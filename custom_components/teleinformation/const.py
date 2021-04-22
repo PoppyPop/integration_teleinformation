@@ -1,14 +1,13 @@
 """Constants for teleinformation."""
 # Base component constants
-from homeassistant.const import (
-    DEVICE_CLASS_CURRENT,
-    DEVICE_CLASS_ENERGY,
-    DEVICE_CLASS_POWER,
-    ELECTRICAL_CURRENT_AMPERE,
-    ENERGY_WATT_HOUR,
-    POWER_WATT,
-)
 import logging
+
+from homeassistant.const import DEVICE_CLASS_CURRENT
+from homeassistant.const import DEVICE_CLASS_ENERGY
+from homeassistant.const import DEVICE_CLASS_POWER
+from homeassistant.const import ELECTRICAL_CURRENT_AMPERE
+from homeassistant.const import ENERGY_WATT_HOUR
+from homeassistant.const import POWER_WATT
 
 NAME = "TeleInformation"
 DOMAIN = "teleinformation"
