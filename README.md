@@ -62,13 +62,13 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 [black]: https://github.com/psf/black
 [black-shield]: https://img.shields.io/badge/
 [commits-shield]: https://img.shields.io/github/commit-activity/y/poppypop/integration_teleinformation.svg?style=for-the-badge
-[commits]: https://github.com/poppypop/integration_teleinformation/commits/main
+[commits]: https://github.com/poppypop/integration_teleinformation/commits/master
 [hacs]: https://hacs.xyz
 [hacsbadge]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge
 [logo]: Logo-EDF-500x407.jpg
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
 [forum]: https://community.home-assistant.io/
-[license]: https://github.com/poppypop/integration_teleinformation/blob/main/LICENSE
+[license]: https://github.com/poppypop/integration_teleinformation/blob/master/LICENSE
 [license-shield]: https://img.shields.io/github/license/poppypop/integration_teleinformation.svg?style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40poppypop-blue.svg?style=for-the-badge
 [pre-commit]: https://github.com/pre-commit/pre-commit
