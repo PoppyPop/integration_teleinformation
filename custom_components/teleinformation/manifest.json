@@ -7,5 +7,6 @@
   "config_flow": true,
   "version": "0.0.1",
   "codeowners": ["@poppypop"],
-  "requirements": ["pyserial-asyncio==0.5"]
+  "requirements": ["pyserial-asyncio==0.5"],
+  "iot_class": "local_push"
 }
