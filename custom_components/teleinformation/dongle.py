@@ -39,7 +39,7 @@ class TeleInformationDongle:
 
     def unload(self):
         """Disconnect callbacks established at init time."""
-        _LOGGER.debug("Unload")
+        _LOGGER.info("Unload")
         self.stop_serial_read()
 
     # async def async_config_entry_first_refresh(self):
@@ -63,9 +63,8 @@ class TeleInformationDongle:
 
     async def serial_read(self):
         """Process the serial data."""
-        _LOGGER.debug(u"Initializing Teleinfo")
+        _LOGGER.info(u"Initializing Teleinfo loop")
 
-        logged_error = False
         while True:
             try:
                 reader, _ = await serial_asyncio.open_serial_connection(
@@ -76,14 +75,12 @@ class TeleInformationDongle:
                     stopbits=serial.STOPBITS_ONE,
                     timeout=self.timeout,
                 )
-            except serial.SerialException as exc:
-                if not logged_error:
-                    _LOGGER.exception(
+            except Exception as exc:
+                _LOGGER.exception(
                         "Unable to connect to the serial device %s: %s. Will retry",
                         self.port,
                         exc,
                     )
-                    logged_error = True
                 await asyncio.sleep(5)
             else:
 
@@ -92,7 +89,7 @@ class TeleInformationDongle:
                 while True:
                     try:
                         rawline = await reader.readline()
-                    except serial.SerialException as exc:
+                    except Exception as exc:
                         _LOGGER.exception(
                             "Error while reading serial device %s: %s", self.port, exc
                         )
@@ -103,7 +100,7 @@ class TeleInformationDongle:
 
                         if is_over and (b"\x02" in line):
                             is_over = False
-                            _LOGGER.debug("Start Frame")
+                            _LOGGER.info("Start Frame")
                             continue
 
                         if (not is_over) and (b"\x03" not in line):
@@ -128,7 +125,7 @@ class TeleInformationDongle:
 
                         if (not is_over) and (b"\x03" in line):
                             is_over = True
-                            _LOGGER.debug(" End Frame")
+                            _LOGGER.info(" End Frame")
                             continue
 
     async def _validate_checksum(self, frame, checksum):
