@@ -77,10 +77,10 @@ class TeleInformationDongle:
                 )
             except Exception as exc:
                 _LOGGER.exception(
-                        "Unable to connect to the serial device %s: %s. Will retry",
-                        self.port,
-                        exc,
-                    )
+                    "Unable to connect to the serial device %s: %s. Will retry",
+                    self.port,
+                    exc,
+                )
                 await asyncio.sleep(5)
             else:
 
