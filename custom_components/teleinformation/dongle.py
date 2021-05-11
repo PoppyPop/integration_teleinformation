@@ -97,11 +97,10 @@ class TeleInformationDongle:
                         )
                         await asyncio.sleep(5)
                         break
-                    else: 
+                    else:
                         # Detect Serial timeout
                         if len(rawline) == 0:
-                            _LOGGER.warning(
-                                u"Timeout reading %s", self.port)
+                            _LOGGER.warning(u"Timeout reading %s", self.port)
                             await asyncio.sleep(5)
                             break
 
