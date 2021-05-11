@@ -67,6 +67,8 @@ class TeleInformationDongle:
 
         while True:
             try:
+                _LOGGER.info(u"Opening %s", self.port)
+
                 reader, _ = await serial_asyncio.open_serial_connection(
                     url=self.port,
                     baudrate=1200,
@@ -95,12 +97,19 @@ class TeleInformationDongle:
                         )
                         await asyncio.sleep(5)
                         break
-                    else:
+                    else: 
+                        # Detect Serial timeout
+                        if len(rawline) == 0:
+                            _LOGGER.warning(
+                                u"Timeout reading %s", self.port)
+                            await asyncio.sleep(5)
+                            break
+
                         line = rawline.replace(b"\r", b"").replace(b"\n", b"")
 
                         if is_over and (b"\x02" in line):
                             is_over = False
-                            _LOGGER.info("Start Frame")
+                            _LOGGER.debug("Start Frame")
                             continue
 
                         if (not is_over) and (b"\x03" not in line):
@@ -125,7 +134,7 @@ class TeleInformationDongle:
 
                         if (not is_over) and (b"\x03" in line):
                             is_over = True
-                            _LOGGER.info(" End Frame")
+                            _LOGGER.debug(" End Frame")
                             continue
 
     async def _validate_checksum(self, frame, checksum):
