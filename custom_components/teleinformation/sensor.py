@@ -1,5 +1,5 @@
 """Sensor platform for teleinformation."""
-from homeassistant.components.sensor import (SensorEntity, STATE_CLASS_MEASUREMENT)
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 
@@ -69,7 +69,7 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
     @property
     def state_class(self):
         """Return the state of the device."""
-        return STATE_CLASS_MEASUREMENT if self.dev_name == "PAPP" else None
+        return SENSOR_TYPES[self.dev_name][3]
 
     @property
     def available(self) -> bool:
