@@ -67,6 +67,11 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
         return self._state
 
     @property
+    def state_class(self):
+        """Return the state of the device."""
+        return SENSOR_TYPES[self.dev_name][3]
+
+    @property
     def available(self) -> bool:
         """Return True if entity is available."""
         return super().available and self._state is not None
