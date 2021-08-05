@@ -5,7 +5,7 @@ import logging
 from homeassistant.const import DEVICE_CLASS_CURRENT
 from homeassistant.const import DEVICE_CLASS_ENERGY
 from homeassistant.const import DEVICE_CLASS_POWER
-from homeassistant.const import ELECTRICAL_CURRENT_AMPERE
+from homeassistant.const import ELECTRIC_CURRENT_AMPERE
 from homeassistant.const import ENERGY_WATT_HOUR
 from homeassistant.const import POWER_WATT
 
@@ -48,7 +48,7 @@ SENSOR_TYPES = {
     ],  # Option tarifaire(type d’abonnement) : OPTARIF(4 car.)
     "ISOUSC": [
         "Intensité souscrite",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité souscrite : ISOUSC( 2 car.unité = ampères)
     "HCHC": [
@@ -68,42 +68,42 @@ SENSOR_TYPES = {
     ],  # Période tarifaire en cours : PTEC( 4 car.)
     "IINST": [
         "Intensite instantanee",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IINST1": [
         "Intensite instantanee phase 1",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IINST2": [
         "Intensite instantanee phase 2",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IINST3": [
         "Intensite instantanee phase 3",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IMAX": [
         "Intensite max",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "IMAX1": [
         "Intensite max phase 1",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "IMAX2": [
         "Intensite max phase 2",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "IMAX3": [
         "Intensite max phase 3",
-        ELECTRICAL_CURRENT_AMPERE,
+        ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "PMAX": [
