@@ -42,6 +42,7 @@ SENSOR_TYPES = {
         "Contrat",
         None,
         None,
+        None,
     ],  # N° d’identification du compteur : ADCO(12 caractères)
     "OPTARIF": [
         "Option tarifaire",
