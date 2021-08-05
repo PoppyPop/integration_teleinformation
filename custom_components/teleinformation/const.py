@@ -2,14 +2,14 @@
 # Base component constants
 import logging
 
+from homeassistant.components.sensor import STATE_CLASS_MEASUREMENT
 from homeassistant.const import DEVICE_CLASS_CURRENT
 from homeassistant.const import DEVICE_CLASS_ENERGY
 from homeassistant.const import DEVICE_CLASS_POWER
 from homeassistant.const import ELECTRIC_CURRENT_AMPERE
 from homeassistant.const import ENERGY_WATT_HOUR
-from homeassistant.const import POWER_WATT
 from homeassistant.const import POWER_VOLT_AMPERE
-from homeassistant.components.sensor import STATE_CLASS_MEASUREMENT
+from homeassistant.const import POWER_WATT
 
 NAME = "TeleInformation"
 DOMAIN = "teleinformation"
