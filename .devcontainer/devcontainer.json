@@ -5,8 +5,6 @@
   "postCreateCommand": "container install",
   "context": "..",
   "workspaceFolder": "/workspace",
-  "workspaceMount": "source=/home/ansible/teleinformation,target=/workspace,type=bind,consistency=cached",
-  "runArgs": ["--device=/dev/ttyUSB0"],
   "appPort": ["9123:8123"],
   "extensions": [
     "ms-python.python",

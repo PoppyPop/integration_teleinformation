@@ -1,5 +1,4 @@
 {
-  "docker.host": "ssh://ansible@10.0.6.91",
   "python.linting.pylintEnabled": false,
   "python.linting.enabled": true,
   "python.pythonPath": "/usr/bin/python",
