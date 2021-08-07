@@ -68,8 +68,13 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
 
     @property
     def state_class(self):
-        """Return the state of the device."""
+        """Return the state_class of the device."""
         return SENSOR_TYPES[self.dev_name][3]
+
+    @property
+    def last_reset(self):
+        """Return the last_reset of the device."""
+        return SENSOR_TYPES[self.dev_name][4]
 
     @property
     def available(self) -> bool:

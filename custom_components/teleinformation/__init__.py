@@ -22,6 +22,7 @@ SCAN_INTERVAL = timedelta(minutes=900)
 
 async def async_setup(hass: HomeAssistant, config: Config):
     """Set up this integration using YAML is not supported."""
+
     return True
 
 
@@ -51,6 +52,19 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         )
 
     entry.add_update_listener(_async_reload_entry)
+
+    def handle_restart(call):
+        """Handle the service call."""
+        restart_usb_dongle = hass.data[DOMAIN][entry.entry_id][DATA_DONGLE]
+
+        restart_usb_dongle.stop_serial_read()
+        restart_usb_dongle.initialize_reading()
+
+    hass.services.async_register(
+        DOMAIN,
+        "restart",
+        handle_restart
+    )
 
     return True
 

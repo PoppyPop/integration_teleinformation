@@ -87,6 +87,7 @@ class TeleInformationDongle:
             else:
 
                 is_over = True
+                currentframe = {}
 
                 while True:
                     try:
@@ -125,14 +126,19 @@ class TeleInformationDongle:
                                 name = name.decode()
                                 value = value.decode()
                                 _LOGGER.debug("Got : [%s] =  (%s)", name, value)
-                                self.hass.helpers.dispatcher.dispatcher_send(
-                                    SIGNAL_RECEIVE_MESSAGE, {name: value}
-                                )
+
+                                currentframe[name] = value
+
                                 if name == "ADCO" and self.device_id is None:
                                     self.device_id = value
 
                         if (not is_over) and (b"\x03" in line):
                             is_over = True
+
+                            self.hass.helpers.dispatcher.dispatcher_send(
+                                SIGNAL_RECEIVE_MESSAGE, currentframe
+                            )
+
                             _LOGGER.debug(" End Frame")
                             continue
 
@@ -155,6 +161,7 @@ class TeleInformationDongle:
         """Close resources."""
         if self._serial_loop_task:
             self._serial_loop_task.cancel()
+            self._serial_loop_task = None
 
 
 async def detect():
