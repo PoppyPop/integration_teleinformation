@@ -60,11 +60,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         restart_usb_dongle.stop_serial_read()
         restart_usb_dongle.initialize_reading()
 
-    hass.services.async_register(
-        DOMAIN,
-        "restart",
-        handle_restart
-    )
+    hass.services.async_register(DOMAIN, "restart", handle_restart)
 
     return True
 
