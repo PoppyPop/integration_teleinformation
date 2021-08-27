@@ -72,11 +72,6 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
         return SENSOR_TYPES[self.dev_name][3]
 
     @property
-    def last_reset(self):
-        """Return the last_reset of the device."""
-        return SENSOR_TYPES[self.dev_name][4]
-
-    @property
     def available(self) -> bool:
         """Return True if entity is available."""
         return super().available and self._state is not None

@@ -3,6 +3,7 @@
 import logging
 
 from homeassistant.components.sensor import STATE_CLASS_MEASUREMENT
+from homeassistant.components.sensor import STATE_CLASS_TOTAL_INCREASING
 from homeassistant.const import DEVICE_CLASS_CURRENT
 from homeassistant.const import DEVICE_CLASS_ENERGY
 from homeassistant.const import DEVICE_CLASS_POWER
@@ -10,11 +11,10 @@ from homeassistant.const import ELECTRIC_CURRENT_AMPERE
 from homeassistant.const import ENERGY_WATT_HOUR
 from homeassistant.const import POWER_VOLT_AMPERE
 from homeassistant.const import POWER_WATT
-from homeassistant.util import dt
 
 NAME = "TeleInformation"
 DOMAIN = "teleinformation"
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 
 LOGGER = logging.getLogger(__package__)
 
@@ -44,11 +44,9 @@ SENSOR_TYPES = {
         None,
         None,
         None,
-        None,
     ],  # N° d’identification du compteur : ADCO(12 caractères)
     "OPTARIF": [
         "Option tarifaire",
-        None,
         None,
         None,
         None,
@@ -58,25 +56,21 @@ SENSOR_TYPES = {
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
         None,
-        None,
     ],  # Intensité souscrite : ISOUSC( 2 car.unité = ampères)
     "HCHC": [
         "Heures creuses",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
-        STATE_CLASS_MEASUREMENT,
-        dt.utc_from_timestamp(0),
+        STATE_CLASS_TOTAL_INCREASING,
     ],  # Index heures creuses si option = heures creuses : HCHC( 9 car.unité = Wh)
     "HCHP": [
         "Heures pleines",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
-        STATE_CLASS_MEASUREMENT,
-        dt.utc_from_timestamp(0),
+        STATE_CLASS_TOTAL_INCREASING,
     ],  # Index heures pleines si option = heures creuses : HCHP( 9 car.unité = Wh)
     "PTEC": [
         "Période Tarifaire",
-        None,
         None,
         None,
         None,
@@ -86,34 +80,29 @@ SENSOR_TYPES = {
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
         STATE_CLASS_MEASUREMENT,
-        None,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IINST1": [
         "Intensite instantanee phase 1",
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
         STATE_CLASS_MEASUREMENT,
-        None,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IINST2": [
         "Intensite instantanee phase 2",
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
         STATE_CLASS_MEASUREMENT,
-        None,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IINST3": [
         "Intensite instantanee phase 3",
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
         STATE_CLASS_MEASUREMENT,
-        None,
     ],  # Intensité instantanée : IINST( 3 car.unité = ampères)
     "IMAX": [
         "Intensite max",
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
-        None,
         None,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "IMAX1": [
@@ -121,13 +110,11 @@ SENSOR_TYPES = {
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
         None,
-        None,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "IMAX2": [
         "Intensite max phase 2",
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
-        None,
         None,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "IMAX3": [
@@ -135,13 +122,11 @@ SENSOR_TYPES = {
         ELECTRIC_CURRENT_AMPERE,
         DEVICE_CLASS_CURRENT,
         None,
-        None,
     ],  # Intensité maximale : IMAX( 3 car.unité = ampères)
     "PMAX": [
         "Puissance maximale triphasée atteinte",
         POWER_WATT,
         DEVICE_CLASS_POWER,
-        None,
         None,
     ],  # Puissance apparente : PAPP( 5 car.unité = Volt.ampères)
     "PAPP": [
@@ -149,11 +134,9 @@ SENSOR_TYPES = {
         POWER_VOLT_AMPERE,
         DEVICE_CLASS_POWER,
         STATE_CLASS_MEASUREMENT,
-        None,
     ],  # Puissance apparente : PAPP( 5 car.unité = Volt.ampères)
     "HHPHC": [
         "Groupe horaire",
-        None,
         None,
         None,
         None,
@@ -163,20 +146,17 @@ SENSOR_TYPES = {
         None,
         None,
         None,
-        None,
     ],  # Mot d’état(autocontrôle) : MOTDETAT(6 car.)
     "BASE": [
         "Base",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
-        STATE_CLASS_MEASUREMENT,
-        dt.utc_from_timestamp(0),
+        STATE_CLASS_TOTAL_INCREASING,
     ],  # Index si option = base : BASE( 9 car.unité = Wh)
     "EJPHN": [
         "EJP Heures normales",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
-        None,
         None,
     ],  # Index heures normales si option = EJP : EJP HN( 9 car.unité = Wh)</para>
     "EJPHPM": [
@@ -184,13 +164,11 @@ SENSOR_TYPES = {
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
         None,
-        None,
     ],  # Index heures de pointe mobile si option = EJP : EJP HPM( 9 car.unité = Wh)</para>
     "PEJP": [
         "EJP Préavis",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
-        None,
         None,
     ],  # Préavis EJP si option = EJP : PEJP( 2 car.) 30mn avant période EJP</para>
     "BBRHCJB": [
@@ -198,13 +176,11 @@ SENSOR_TYPES = {
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
         None,
-        None,
     ],  # Index heures creuses jours bleus si option = tempo : BBR HC JB( 9 car.unité = Wh)</para>
     "BBRHPJB": [
         "Tempo heures bleues pleines",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
-        None,
         None,
     ],  # Index heures pleines jours bleus si option = tempo : BBR HP JB( 9 car.unité = Wh)</para>
     "BBRHCJW": [
@@ -212,13 +188,11 @@ SENSOR_TYPES = {
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
         None,
-        None,
     ],  # Index heures creuses jours blancs si option = tempo : BBR HC JW( 9 car.unité = Wh)</para>
     "BBRHPJW": [
         "Tempo heures blanches pleines",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
-        None,
         None,
     ],  # Index heures pleines jours blancs si option = tempo : BBR HP JW( 9 car.unité = Wh)</para>
     "BBRHCJR": [
@@ -226,18 +200,15 @@ SENSOR_TYPES = {
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
         None,
-        None,
     ],  # Index heures creuses jours rouges si option = tempo : BBR HC JR( 9 car.unité = Wh)</para>
     "BBRHPJR": [
         "Tempo heures rouges pleines",
         ENERGY_WATT_HOUR,
         DEVICE_CLASS_ENERGY,
         None,
-        None,
     ],  # Index heures pleines jours rouges si option = tempo : BBR HP JR( 9 car.unité = Wh)</para>
     "DEMAIN": [
         "Tempo couleur demain",
-        None,
         None,
         None,
         None,
@@ -247,11 +218,9 @@ SENSOR_TYPES = {
         None,
         None,
         None,
-        None,
     ],  # Avertissement de dépassement de puissance souscrite : ADPS( 3 car.unité = ampères) (message émis uniquement en cas de dépassement effectif, dans ce cas il est immédiat)</para>
     "PPOT": [
         "Présence des potentiels ",
-        None,
         None,
         None,
         None,

@@ -183,7 +183,7 @@ async def validate_path(path: str):
     try:
         # Creating the serial communicator will raise an exception
         # if it cannot connect
-        with serial.Serial(port=path):
+        with serial.serial_for_url(url=path):
             return True
 
     except serial.SerialException as exception:
