@@ -11,6 +11,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import Config
 from homeassistant.core import HomeAssistant
 
+from .const import DATA_DETECTED_VALUE
 from .const import DATA_DONGLE
 from .const import DATA_SERIAL_NUMBER
 from .const import DOMAIN
@@ -41,9 +42,12 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     # serialnumber = await usb_dongle.async_config_entry_first_refresh()
     usb_dongle.initialize_reading()
 
-    while usb_dongle.device_id is None:
+    while usb_dongle.dataAvailable is not True:
         await asyncio.sleep(1)
 
+    hass.data[DOMAIN][entry.entry_id][
+        DATA_DETECTED_VALUE
+    ] = usb_dongle.detectedValue.keys()
     hass.data[DOMAIN][entry.entry_id][DATA_SERIAL_NUMBER] = usb_dongle.device_id
 
     for platform in PLATFORMS:

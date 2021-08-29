@@ -4,11 +4,12 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 
 from .const import CONF_MONITORED_VARIABLES
+from .const import DATA_DETECTED_VALUE
 from .const import DATA_SERIAL_NUMBER
 from .const import DOMAIN
 from .const import LOGGER
 from .const import SENSOR_TYPES
-from .const import SENSOR_TYPES_DEFAULT
+from .const import SENSOR_TYPES_ALL
 from .entity import TeleinformationEntity
 
 
@@ -17,14 +18,20 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_d
 
     serialNumber: str = hass.data[DOMAIN][entry.entry_id][DATA_SERIAL_NUMBER]
 
-    devices = entry.options.get(CONF_MONITORED_VARIABLES, SENSOR_TYPES_DEFAULT)
+    defaultValue: list[str] = [
+        detectedSensor
+        for detectedSensor in hass.data[DOMAIN][entry.entry_id][DATA_DETECTED_VALUE]
+        if (detectedSensor in SENSOR_TYPES_ALL)
+    ]
+
+    devices = entry.options.get(CONF_MONITORED_VARIABLES, defaultValue)
 
     platform = "sensor"
 
     # Clean removed entity
     entity_registry = await hass.helpers.entity_registry.async_get_registry()
 
-    toremove = [removed for removed in SENSOR_TYPES_DEFAULT if (removed not in devices)]
+    toremove = [removed for removed in SENSOR_TYPES_ALL if (removed not in devices)]
     LOGGER.debug(toremove)
 
     for removedSensor in toremove:
@@ -62,7 +69,7 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
         return _get_unique_id(self.meter_id, self.dev_name)
 
     @property
-    def state(self):
+    def native_value(self):
         """Return the state of the device."""
         return self._state
 
@@ -70,11 +77,6 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
     def state_class(self):
         """Return the state_class of the device."""
         return SENSOR_TYPES[self.dev_name][3]
-
-    @property
-    def last_reset(self):
-        """Return the last_reset of the device."""
-        return SENSOR_TYPES[self.dev_name][4]
 
     @property
     def available(self) -> bool:
@@ -87,7 +89,7 @@ class TeleinformationSensor(TeleinformationEntity, SensorEntity):
         return SENSOR_TYPES[self.dev_name][2]
 
     @property
-    def unit_of_measurement(self) -> str:
+    def native_unit_of_measurement(self) -> str:
         """Return the unit of measurement of this entity."""
         return SENSOR_TYPES[self.dev_name][1]
 

@@ -5,6 +5,7 @@ from homeassistant import config_entries
 from homeassistant.core import callback
 
 from . import dongle
+from .const import CONF_COUNTERTYPE
 from .const import CONF_DEVICE
 from .const import CONF_MONITORED_VARIABLES
 from .const import CONF_TIMEOUT
@@ -12,8 +13,11 @@ from .const import DEFAULT_CONF_TIMEOUT
 from .const import DOMAIN
 from .const import ERROR_INVALID_DONGLE_PATH
 from .const import MANUAL_PATH_VALUE
-from .const import SENSOR_TYPES
-from .const import SENSOR_TYPES_DEFAULT
+from .const import SENSOR_HISTORICAL
+from .const import SENSOR_RECOMMENDED_DEFAULT
+from .const import SENSOR_STANDARD
+from .const import SENSOR_TYPES_HISTO
+from .const import SENSOR_TYPES_STANDARD
 
 
 class TeleinformationFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
@@ -30,12 +34,32 @@ class TeleinformationFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
 
-        return await self.async_step_detect()
+        return await self.async_step_metertype()
+
+    async def async_step_metertype(self, user_input=None):
+        """Propose a list of meter type."""
+        errors = {}
+
+        if user_input is not None:
+            return await self.async_step_detect()
+
+        known_meter = {
+            SENSOR_HISTORICAL: "Mode historique",
+            SENSOR_STANDARD: "Mode standard",
+        }
+
+        return self.async_show_form(
+            step_id="detect",
+            data_schema=vol.Schema(
+                {vol.Required(CONF_COUNTERTYPE): vol.In(known_meter)}
+            ),
+            errors=errors,
+        )
 
     async def async_step_detect(self, user_input=None):
         """Propose a list of detected dongles."""
         errors = {}
-        if user_input is not None:
+        if user_input is not None and CONF_DEVICE in user_input.keys():
             if user_input[CONF_DEVICE] == MANUAL_PATH_VALUE:
                 return await self.async_step_manual()
             if await self.validate_teleinformation_device(user_input):
@@ -98,12 +122,24 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
+        countert = self.config_entry.options.get(CONF_COUNTERTYPE)
+        if countert == SENSOR_HISTORICAL:
+            BASE_SENSORS = SENSOR_TYPES_HISTO
+        else:
+            BASE_SENSORS = SENSOR_TYPES_STANDARD
+
+        DEFAULT_SENSORS = [
+            sensor_id
+            for sensor_id, sensor in BASE_SENSORS.items()
+            if sensor_id in SENSOR_RECOMMENDED_DEFAULT
+        ]
+
         known_available_resources = {
-            sensor_id: sensor[0] for sensor_id, sensor in SENSOR_TYPES.items()
+            sensor_id: sensor[0] for sensor_id, sensor in BASE_SENSORS.items()
         }
 
         resources = self.config_entry.options.get(
-            CONF_MONITORED_VARIABLES, SENSOR_TYPES_DEFAULT
+            CONF_MONITORED_VARIABLES, DEFAULT_SENSORS
         )
         scan_interval = self.config_entry.options.get(
             CONF_TIMEOUT, DEFAULT_CONF_TIMEOUT
