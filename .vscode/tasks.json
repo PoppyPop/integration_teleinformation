@@ -28,6 +28,12 @@
     {
       "label": "Launch fake serial client",
       "type": "shell",
+      "command": "python serialWrite.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "Launch fake serial client Socket",
+      "type": "shell",
       "command": "python serialWriteSocket.py",
       "problemMatcher": []
     }
