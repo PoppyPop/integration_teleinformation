@@ -11,9 +11,11 @@ from homeassistant.const import EVENT_HOMEASSISTANT_STOP
 from homeassistant.core import callback
 from homeassistant.core import HomeAssistant
 
-from .const import CONF_COUNTERTYPE, CONF_DEVICE, SENSOR_HISTORICAL
+from .const import CONF_COUNTERTYPE
+from .const import CONF_DEVICE
 from .const import CONF_TIMEOUT
 from .const import DEFAULT_CONF_TIMEOUT
+from .const import SENSOR_HISTORICAL
 from .const import SIGNAL_RECEIVE_MESSAGE
 
 
