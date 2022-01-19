@@ -11,7 +11,7 @@ from homeassistant.const import EVENT_HOMEASSISTANT_STOP
 from homeassistant.core import callback
 from homeassistant.core import HomeAssistant
 
-from .const import CONF_DEVICE
+from .const import CONF_COUNTERTYPE, CONF_DEVICE, SENSOR_HISTORICAL
 from .const import CONF_TIMEOUT
 from .const import DEFAULT_CONF_TIMEOUT
 from .const import SIGNAL_RECEIVE_MESSAGE
@@ -39,6 +39,12 @@ class TeleInformationDongle:
         self.hass = hass
         self.port = entry.data[CONF_DEVICE]
         self.timeout = entry.options.get(CONF_TIMEOUT, DEFAULT_CONF_TIMEOUT)
+
+        countert = entry.options.get(CONF_COUNTERTYPE)
+        if countert == SENSOR_HISTORICAL:
+            self.baudrate = 1200
+        else:
+            self.baudrate = 9600
 
     def unload(self):
         """Disconnect callbacks established at init time."""
@@ -78,9 +84,10 @@ class TeleInformationDongle:
                         timeout=self.timeout,
                     )
                 else:
+
                     reader, _ = await serial_asyncio.open_serial_connection(
                         url=self.port,
-                        baudrate=1200,
+                        baudrate=self.baudrate,
                         bytesize=7,
                         parity=serial.PARITY_EVEN,
                         stopbits=serial.STOPBITS_ONE,
