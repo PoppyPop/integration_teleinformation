@@ -35,7 +35,6 @@
         }
       },
       "init": {
-        "title": "TeleInformation",
         "description": "Si vous avez besoin d'aide pour la configuration, regardez ici: https://github.com/poppypop/integration_teleinformation",
         "data": {
           "monitoredvars": "Valeur à suivre",
