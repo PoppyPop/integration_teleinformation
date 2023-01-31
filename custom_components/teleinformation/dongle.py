@@ -74,11 +74,11 @@ class TeleInformationDongle:
 
     async def serial_read(self):
         """Process the serial data."""
-        _LOGGER.info(u"Initializing Teleinfo loop")
+        _LOGGER.info("Initializing Teleinfo loop")
 
         while True:
             try:
-                _LOGGER.info(u"Opening %s", self.port)
+                _LOGGER.info("Opening %s", self.port)
 
                 if self.port.startswith("/workspace") or not self.port.startswith("/"):
                     reader, _ = await serial_asyncio.open_serial_connection(
@@ -120,7 +120,7 @@ class TeleInformationDongle:
                     else:
                         # Detect Serial timeout
                         if len(rawline) == 0:
-                            _LOGGER.warning(u"Timeout reading %s", self.port)
+                            _LOGGER.warning("Timeout reading %s", self.port)
                             await asyncio.sleep(5)
                             break
 
@@ -186,7 +186,7 @@ class TeleInformationDongle:
             return True
 
         _LOGGER.warning(
-            u"Invalid checksum for %s : %s",
+            "Invalid checksum for %s : %s",
             frame,
             ord(checksum),
         )
@@ -199,7 +199,7 @@ class TeleInformationDongle:
             return True
 
         _LOGGER.debug(
-            u"Invalid checksum for %s : %s != %s",
+            "Invalid checksum for %s : %s != %s",
             datas,
             computed_checksum,
             ord(checksum),
