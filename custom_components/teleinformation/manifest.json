@@ -4,7 +4,7 @@
   "codeowners": ["@poppypop"],
   "config_flow": true,
   "documentation": "https://github.com/poppypop/integration_teleinformation",
-  "iot_class": "local_push"
+  "iot_class": "local_push",
   "issue_tracker": "https://github.com/poppypop/integration_teleinformation/issues",
   "requirements": ["pyserial-asyncio==0.5"],
   "version": "0.1.1"
