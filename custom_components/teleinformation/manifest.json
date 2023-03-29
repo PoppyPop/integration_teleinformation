@@ -1,12 +1,11 @@
 {
   "domain": "teleinformation",
   "name": "TeleInformation",
-  "documentation": "https://github.com/poppypop/integration_teleinformation",
-  "issue_tracker": "https://github.com/poppypop/integration_teleinformation/issues",
-  "dependencies": [],
-  "config_flow": true,
-  "version": "0.1.1",
   "codeowners": ["@poppypop"],
-  "requirements": ["pyserial-asyncio==0.5"],
+  "config_flow": true,
+  "documentation": "https://github.com/poppypop/integration_teleinformation",
   "iot_class": "local_push"
+  "issue_tracker": "https://github.com/poppypop/integration_teleinformation/issues",
+  "requirements": ["pyserial-asyncio==0.5"],
+  "version": "0.1.1",
 }
