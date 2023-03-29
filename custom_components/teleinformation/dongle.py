@@ -86,7 +86,6 @@ class TeleInformationDongle:
                         timeout=self.timeout,
                     )
                 else:
-
                     reader, _ = await serial_asyncio.open_serial_connection(
                         url=self.port,
                         baudrate=self.baudrate,
@@ -104,7 +103,6 @@ class TeleInformationDongle:
                 )
                 await asyncio.sleep(5)
             else:
-
                 is_over = True
                 currentframe = {}
 
