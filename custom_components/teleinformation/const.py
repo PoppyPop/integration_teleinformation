@@ -1,4 +1,5 @@
 """Constants for teleinformation."""
+
 # Base component constants
 import logging
 

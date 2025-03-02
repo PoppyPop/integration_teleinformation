@@ -1,4 +1,5 @@
 """Representation of an Teleinformation dongle."""
+
 import asyncio
 import glob
 import logging

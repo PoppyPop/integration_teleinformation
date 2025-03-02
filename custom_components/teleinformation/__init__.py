@@ -4,6 +4,7 @@ Custom integration to integrate teleinformation with Home Assistant.
 For more details about this integration, please refer to
 https://github.com/poppypop/integration_teleinformation
 """
+
 import asyncio
 from datetime import timedelta
 
@@ -45,9 +46,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     while usb_dongle.dataAvailable is not True:
         await asyncio.sleep(1)
 
-    hass.data[DOMAIN][entry.entry_id][
-        DATA_DETECTED_VALUE
-    ] = usb_dongle.detectedValue.keys()
+    hass.data[DOMAIN][entry.entry_id][DATA_DETECTED_VALUE] = (
+        usb_dongle.detectedValue.keys()
+    )
     hass.data[DOMAIN][entry.entry_id][DATA_SERIAL_NUMBER] = usb_dongle.device_id
 
     for platform in PLATFORMS:
